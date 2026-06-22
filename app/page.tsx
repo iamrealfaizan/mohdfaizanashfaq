@@ -1,20 +1,19 @@
 import Image from "next/image";
 import {
   ArrowRight,
-  Bot,
   BriefcaseBusiness,
   Building2,
   ChevronRight,
   Cpu,
   ExternalLink,
-  GraduationCap,
+  HeartHandshake,
   Link2,
   Mail,
   Medal,
   Sparkles,
-  Workflow,
 } from "lucide-react";
 
+import { SectionHeading } from "@/components/SectionHeading";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -26,192 +25,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import {
+  certifications,
+  communityImpact,
+  contactLinks,
+  education,
+  experienceTimeline,
+  featuredProjects,
+  homeNavLinks,
+  metrics,
+  services,
+} from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Experience", href: "#experience" },
-  { label: "Services", href: "#services" },
-  { label: "Credentials", href: "#credentials" },
-  { label: "Contact", href: "#contact" },
-];
-
-const metrics = [
-  { value: "30%", label: "RAG accuracy lift" },
-  { value: "95%", label: "Manual work reduced" },
-  { value: "70%", label: "Operational efficiency gain" },
-];
-
-const featuredProjects = [
-  {
-    title: "ResumePros AI",
-    role: "Product Engineer",
-    summary:
-      "Built and shipped a production AI product for resume optimization with structured scoring and guided rewriting workflows.",
-    outcomes: [
-      "Built extraction, analysis, and generation loops around LLM workflows",
-      "Improved output consistency with deterministic evaluation beside model output",
-      "Owned the full stack from product idea to production iteration",
-    ],
-    stack: ["Next.js", "Node.js", "MongoDB", "OpenAI APIs"],
-    href: "https://github.com/iamrealfaizan",
-  },
-  {
-    title: "Document Understanding AI Pipeline",
-    role: "AI Engineer",
-    summary:
-      "Designed an end-to-end RAG document system combining OCR, embeddings, retrieval, and LLM reasoning.",
-    outcomes: [
-      "Connected ingestion, retrieval, and validation into one production pipeline",
-      "Improved performance by tuning both accuracy and latency together",
-      "Built a real document intelligence workflow instead of a demo-only chatbot",
-    ],
-    stack: ["Python", "RAG", "Embeddings", "LLMs"],
-  },
-  {
-    title: "Product Analytics Dashboard",
-    role: "Product Analytics Builder",
-    summary:
-      "Created a KPI dashboard that consolidated SaaS metrics for faster product decisions and tighter operating rhythm.",
-    outcomes: [
-      "Reduced manual KPI tracking with one consolidated decision surface",
-      "Brought funnel, cohort, and real-time monitoring into one workflow",
-      "Supported better product decisions with clearer operating visibility",
-    ],
-    stack: ["Python", "Streamlit", "Analytics", "SaaS Metrics"],
-  },
-];
-
-const services = [
-  {
-    icon: Bot,
-    serviceName: "AI Product Builds",
-    oneLiner:
-      "I build AI features that feel like product, not lab experiments.",
-    supportingPoints: [
-      "LLM-powered product workflows",
-      "Scoring, analysis, and generation systems",
-      "Production delivery from prototype to rollout",
-    ],
-  },
-  {
-    icon: Cpu,
-    serviceName: "RAG And Document Intelligence",
-    oneLiner:
-      "I design retrieval pipelines that turn messy knowledge into usable output.",
-    supportingPoints: [
-      "Document ingestion and retrieval architecture",
-      "Embedding and vector search integration",
-      "Accuracy, latency, and evaluation tuning",
-    ],
-  },
-  {
-    icon: Workflow,
-    serviceName: "Automation And AI Workflows",
-    oneLiner:
-      "I automate operational bottlenecks with agentic and LLM-based systems.",
-    supportingPoints: [
-      "Workflow automation around real business constraints",
-      "API integration and orchestration logic",
-      "Scalable delivery with cloud and container tooling",
-    ],
-  },
-];
-
-const experienceTimeline = [
-  {
-    company: "Adaptive AI Ventures",
-    role: "Team Lead - Software Engineering",
-    dateRange: "Oct 2025 - Present",
-    highlights: [
-      "Led production-grade AI systems and LLM workflows from architecture through deployment.",
-      "Improved delivery speed and reliability through stronger engineering practices and design reviews.",
-      "Mentored engineers on LLM development, RAG pipelines, and prompt engineering.",
-    ],
-  },
-  {
-    company: "Adaptive AI Ventures",
-    role: "AI Engineer",
-    dateRange: "Dec 2023 - Oct 2025",
-    highlights: [
-      "Built RAG pipelines across OpenAI, Gemini, Llama2, and Mistral with a 30% accuracy improvement.",
-      "Reduced manual processing time by 95% with document intelligence workflows.",
-      "Deployed scalable AI services with Docker, Kubernetes, GCP, and AWS.",
-    ],
-  },
-  {
-    company: "Government College of Engineering, Aurangabad",
-    role: "Master of Computer Applications",
-    dateRange: "2022 - 2024",
-    highlights: [
-      "Graduated with a 9.0 CGPA while deepening systems and applied computing foundations.",
-    ],
-  },
-  {
-    company: "Maulana Azad College, Aurangabad",
-    role: "Bachelor of Science in Computer Science",
-    dateRange: "2019 - 2022",
-    highlights: [
-      "Built the computer science base that later supported full-stack and AI systems work.",
-    ],
-  },
-];
-
-const certifications = [
-  {
-    title: "Generative AI Leader Specialization",
-    issuer: "Google Cloud",
-    date: "Apr 2026",
-  },
-  {
-    title: "Google Prompting Essentials",
-    issuer: "Google",
-    date: "Mar 2026",
-  },
-  {
-    title: "Automation Business Analysis - Concepts And Principles",
-    issuer: "UiPath",
-    date: "Jan 2025",
-  },
-];
-
-const contactLinks = {
-  email: "mohdfaizanashfaq@gmail.com",
-  linkedin: "https://linkedin.com/in/mohdfaizanashfaq",
-  github: "https://github.com/iamrealfaizan",
-  leetcode: "https://leetcode.com",
-  resumeHref: "/resume/MOHD_FAIZAN_7498478741.pdf",
-};
-
-function SectionHeading({
-  eyebrow,
-  title,
-  description,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,0.7fr)] lg:items-end">
-      <div>
-        <p className="font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-[#2D1A0E]/65">
-          {eyebrow}
-        </p>
-        <h2 className="mt-3 max-w-[10ch] text-[3rem] font-black leading-none tracking-tight md:text-[4.5rem]">
-          {title}
-        </h2>
-      </div>
-      <p className="max-w-[52ch] text-base text-[#2D1A0E]/78">{description}</p>
-    </div>
-  );
-}
 
 export default function Home() {
   return (
     <div id="top" className="bg-grid bg-[#F2EDE4] text-[#2D1A0E]">
-      <SiteHeader links={navLinks} />
+      <SiteHeader links={homeNavLinks} />
 
       <main>
         <section className="overflow-hidden">
@@ -225,10 +55,9 @@ export default function Home() {
                 AI SYSTEMS. PRODUCT THINKING. SHIPPED.
               </h1>
 
-              <p className="mt-5 max-w-[32rem] text-base text-[#2D1A0E]/80 md:text-lg animate-in fade-in slide-in-from-bottom-6 duration-700 [animation-delay:220ms] [animation-fill-mode:both] motion-reduce:animate-none">
-                I build production-grade LLM systems, RAG pipelines, and
-                AI-powered workflows that move from idea to deployment with
-                measurable impact.
+              <p className="mt-5 max-w-[33rem] text-base text-[#2D1A0E]/80 md:text-lg animate-in fade-in slide-in-from-bottom-6 duration-700 [animation-delay:220ms] [animation-fill-mode:both] motion-reduce:animate-none">
+                I help teams turn ideas into scalable AI and web solutions that
+                save time, cut costs, and create measurable impact.
               </p>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row animate-in fade-in slide-in-from-bottom-6 duration-700 [animation-delay:320ms] [animation-fill-mode:both] motion-reduce:animate-none">
@@ -283,8 +112,7 @@ export default function Home() {
               </div>
               <div className="absolute bottom-6 right-2 hidden max-w-[12rem] xl:block">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2D1A0E]/72">
-                  BUILT ACROSS OPENAI, GEMINI, LLAMA2, MISTRAL, DOCKER,
-                  KUBERNETES, GCP, AWS
+                  REMOTE, HYBRID, OR ON-SITE DELIVERY FOR AI AND WEB SYSTEMS
                 </p>
               </div>
               <div className="relative h-[340px] w-full max-w-[380px] animate-in fade-in slide-in-from-right-8 duration-700 [animation-delay:220ms] [animation-fill-mode:both] motion-reduce:animate-none md:h-[460px] md:max-w-[520px] lg:h-[620px] lg:max-w-[600px] xl:h-[680px] xl:max-w-[660px]">
@@ -307,10 +135,10 @@ export default function Home() {
               CURRENTLY LEADING AI DELIVERY AT ADAPTIVE AI VENTURES
             </p>
             <p className="font-heading text-[13px] font-bold uppercase tracking-[0.22em]">
-              PRODUCTION LLM SYSTEMS, RAG, AND DOCUMENT INTELLIGENCE
+              DIGITIZED 1,000+ RECORDS WITH AI, OCR, AND COMPUTER VISION
             </p>
             <p className="font-heading text-[13px] font-bold uppercase tracking-[0.22em]">
-              END-TO-END BUILDERSHIP FROM ARCHITECTURE TO DEPLOYMENT
+              95% FASTER PROCESSING AND 80% STRONGER DATA ACCESSIBILITY
             </p>
             <p className="font-heading text-[13px] font-bold uppercase tracking-[0.22em]">
               RECRUITER-READY, CLIENT-READY, EXECUTION-FIRST
@@ -321,39 +149,41 @@ export default function Home() {
         <section id="about" className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
           <SectionHeading
             eyebrow="POSITIONING"
-            title="I TURN COMPLEX AI CAPABILITY INTO SHIPPED SYSTEMS."
-            description="My work sits at the intersection of AI engineering, product execution, and delivery discipline. I build systems that have to work under real constraints: noisy data, tight timelines, evaluation pressure, and actual user outcomes."
+            title="I TURN COMPLEX AI CAPABILITY INTO SCALABLE IMPACT."
+            description="I build AI and web systems that help businesses move faster, reduce wasted effort, and translate technical potential into measurable outcomes. The work is not just about models, it is about clarity, execution, and results."
           />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)]">
             <Card className="rounded-none border-0 bg-[#E8DCC8] py-0 shadow-none ring-0">
               <CardHeader className="rounded-none px-6 pt-6">
                 <CardTitle className="font-heading text-[2rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
-                  WHAT I FOCUS ON
+                  HOW I HELP
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 px-6 pb-6 pt-4 text-[#2D1A0E]/82">
                 <p>
-                  Production-grade LLM systems, RAG pipelines, prompt-driven
-                  workflows, AI automation, and productized intelligence layers.
+                  I work across AI engineering, full-stack delivery, and
+                  automation design to build systems that save time, cut costs,
+                  and scale cleanly.
                 </p>
                 <p>
-                  I care about architecture, output quality, latency, evaluation,
-                  and getting AI into a form that teams can actually operate.
+                  That can mean fine-tuning LLM workflows, standing up RAG
+                  pipelines, or shipping the application layer that makes the
+                  system useful to real teams.
                 </p>
               </CardContent>
             </Card>
 
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                "LANGCHAIN",
-                "FASTAPI",
-                "HUGGINGFACE",
+                "LLM SYSTEMS",
+                "RAG PIPELINES",
+                "FULL-STACK APPS",
+                "OCR + VISION",
+                "AUTOMATION",
+                "SCALABLE DELIVERY",
                 "NEXT.JS",
-                "OPENAI",
-                "PINECONE",
-                "DOCKER",
-                "KUBERNETES",
+                "PYTHON",
               ].map((skill) => (
                 <div
                   key={skill}
@@ -371,7 +201,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="FLAGSHIP WORK"
               title="THREE BUILDS THAT SHOW THE WAY I THINK."
-              description="These are not speculative concepts. They show how I approach product execution, workflow design, retrieval architecture, and measurable delivery under production expectations."
+              description="These are the most representative proofs on the homepage. The full archive lives on a separate projects page so the landing page stays focused."
             />
 
             <div className="mt-12 grid gap-6 xl:grid-cols-3">
@@ -387,7 +217,7 @@ export default function Home() {
                   <div className="flex min-h-[150px] items-end justify-between border-b border-[#2D1A0E]/10 px-6 py-6">
                     <div>
                       <p className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/65">
-                        {project.role}
+                        {project.roleOrType}
                       </p>
                       <h3 className="mt-3 max-w-[8ch] text-[2.3rem] font-black leading-none tracking-tight">
                         {project.title}
@@ -402,10 +232,10 @@ export default function Home() {
                       {project.summary}
                     </CardDescription>
                     <div className="space-y-3">
-                      {project.outcomes.map((outcome) => (
-                        <div key={outcome} className="flex gap-3 text-sm text-[#2D1A0E]/82">
+                      {project.highlights.map((highlight) => (
+                        <div key={highlight} className="flex gap-3 text-sm text-[#2D1A0E]/82">
                           <ChevronRight className="mt-0.5 size-4 shrink-0 text-[#F06A2A]" />
-                          <p>{outcome}</p>
+                          <p>{highlight}</p>
                         </div>
                       ))}
                     </div>
@@ -420,20 +250,22 @@ export default function Home() {
                         </Badge>
                       ))}
                     </div>
-                    {project.href ? (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 font-heading text-[13px] font-bold uppercase tracking-[0.16em] text-[#2D1A0E] hover:text-[#F06A2A]"
-                      >
-                        VIEW PROFILE
-                        <ExternalLink className="size-4" />
-                      </a>
-                    ) : null}
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            <div className="mt-10 flex justify-start">
+              <a
+                href="/projects"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "h-auto rounded-none border-[#2D1A0E] bg-transparent px-8 py-4 font-heading text-[13px] font-bold uppercase tracking-[0.18em] text-[#2D1A0E] hover:bg-[#2D1A0E] hover:text-[#FAFAF8]"
+                )}
+              >
+                SEE ALL PROJECTS
+                <ArrowRight className="size-4" />
+              </a>
             </div>
           </div>
         </section>
@@ -488,7 +320,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="EXPERIENCE"
               title="A TIMELINE BUILT AROUND DELIVERY."
-              description="The timeline matters because it shows compounding responsibility: engineering depth, product thinking, and eventually technical leadership around AI systems that have to ship."
+              description="The timeline shows progression from building systems to leading them. It is meant to show depth, measurable outcomes, and the ability to deliver across roles."
             />
 
             <div className="mt-12 space-y-6">
@@ -510,11 +342,10 @@ export default function Home() {
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F5C800] text-[#2D1A0E]">
                           {item.role.includes("Lead") ? (
                             <BriefcaseBusiness className="size-4" />
-                          ) : item.role.includes("Master") ||
-                            item.role.includes("Bachelor") ? (
-                            <GraduationCap className="size-4" />
-                          ) : (
+                          ) : item.role.includes("Intern") ? (
                             <Building2 className="size-4" />
+                          ) : (
+                            <Cpu className="size-4" />
                           )}
                         </div>
                         <p className="font-heading text-[1.5rem] font-black uppercase leading-none tracking-tight">
@@ -545,8 +376,8 @@ export default function Home() {
         <section id="credentials" className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
           <SectionHeading
             eyebrow="CREDENTIALS"
-            title="CERTIFICATIONS THAT SUPPORT THE WORK."
-            description="The core trust still comes from shipped systems, but these credentials reinforce range across GenAI systems, prompting, and automation analysis."
+            title="CREDENTIALS THAT SUPPORT THE WORK."
+            description="The strongest trust still comes from shipped systems, but these credentials strengthen leadership, discipline, and range across AI, prompting, and automation."
           />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
@@ -590,31 +421,64 @@ export default function Home() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6 px-6 py-6 text-[#2D1A0E]/80">
-                <div>
-                  <p className="font-heading text-[1.7rem] font-bold uppercase leading-none tracking-tight text-[#2D1A0E]">
-                    MCA
-                  </p>
-                  <p className="mt-2 text-[#2D1A0E]/78">
-                    Government College of Engineering, Aurangabad
-                  </p>
-                  <p className="mt-2 font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/60">
-                    2022 - 2024 | CGPA 9.0
-                  </p>
-                </div>
-                <Separator className="bg-[#2D1A0E]/10" />
-                <div>
-                  <p className="font-heading text-[1.7rem] font-bold uppercase leading-none tracking-tight text-[#2D1A0E]">
-                    B.SC COMPUTER SCIENCE
-                  </p>
-                  <p className="mt-2 text-[#2D1A0E]/78">
-                    Maulana Azad College, Aurangabad
-                  </p>
-                  <p className="mt-2 font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/60">
-                    2019 - 2022
-                  </p>
-                </div>
+                {education.map((entry, index) => (
+                  <div key={entry.degree}>
+                    {index > 0 ? (
+                      <Separator className="mb-6 bg-[#2D1A0E]/10" />
+                    ) : null}
+                    <p className="font-heading text-[1.55rem] font-bold uppercase leading-none tracking-tight text-[#2D1A0E]">
+                      {entry.degree}
+                    </p>
+                    <p className="mt-2 text-[#2D1A0E]/78">{entry.institution}</p>
+                    <p className="mt-2 font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/60">
+                      {entry.dateRange} | {entry.detailLine}
+                    </p>
+                    <div className="mt-4 space-y-3">
+                      {entry.achievements.map((achievement) => (
+                        <div key={achievement} className="flex gap-3 text-sm">
+                          <div className="mt-2 h-2 w-2 shrink-0 bg-[#F06A2A]" />
+                          <p>{achievement}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        <section className="bg-[#FAFAF8] py-20 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 md:px-8">
+            <SectionHeading
+              eyebrow="COMMUNITY IMPACT"
+              title="I WANT MY WORK TO HELP BEYOND DELIVERY."
+              description="Outside direct project work, I am interested in contributing where guidance, technical effort, and organized support can create meaningful social value."
+            />
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {communityImpact.map((entry, index) => (
+                <Card
+                  key={entry.title}
+                  className={cn(
+                    "rounded-none border border-[#2D1A0E]/10 bg-[#FAFAF8] py-0 shadow-none ring-0",
+                    index === 0 && "lg:translate-y-4"
+                  )}
+                >
+                  <CardHeader className="gap-4 rounded-none border-b border-[#2D1A0E]/10 px-6 py-6">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F5C800] text-[#2D1A0E]">
+                      <HeartHandshake className="size-6" />
+                    </div>
+                    <CardTitle className="font-heading text-[1.9rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
+                      {entry.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-6 py-6 text-[#2D1A0E]/80">
+                    <p>{entry.summary}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
       </main>

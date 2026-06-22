@@ -1,27 +1,76 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f2ede4;
+    --foreground: #2d1a0e;
+    --card: #e8dcc8;
+    --card-foreground: #2d1a0e;
+    --popover: #fafaf8;
+    --popover-foreground: #2d1a0e;
+    --primary: #f5c800;
+    --primary-foreground: #2d1a0e;
+    --secondary: #2d1a0e;
+    --secondary-foreground: #fafaf8;
+    --muted: #e8dcc8;
+    --muted-foreground: rgba(45, 26, 14, 0.78);
+    --accent: #f06a2a;
+    --accent-foreground: #fafaf8;
+    --destructive: #b42318;
+    --border: rgba(45, 26, 14, 0.16);
+    --input: rgba(45, 26, 14, 0.12);
+    --ring: rgba(240, 106, 42, 0.55);
+    --radius: 0rem;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  * {
+    border-color: var(--border);
+    outline: none;
+  }
+
+  html {
+    @apply bg-background font-body text-foreground;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-body text-[15px] leading-relaxed text-foreground antialiased;
+    background-image:
+      linear-gradient(to right, rgba(45, 26, 14, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(45, 26, 14, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading uppercase tracking-tight text-foreground;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  ::selection {
+    background: rgba(245, 200, 0, 0.45);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(45, 26, 14, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(45, 26, 14, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }

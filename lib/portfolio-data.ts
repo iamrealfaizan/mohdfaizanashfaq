@@ -39,6 +39,7 @@ export interface CertificationEntry {
   title: string;
   issuer: string;
   date: string;
+  credentialHref?: string;
 }
 
 export interface EducationEntry {
@@ -62,19 +63,12 @@ export interface ContactLinks {
   resumeHref: string;
 }
 
-export const homeNavLinks: NavLink[] = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Experience", href: "#experience" },
-  { label: "Services", href: "#services" },
-  { label: "Credentials", href: "#credentials" },
-  { label: "Contact", href: "#contact" },
-];
-
-export const projectsNavLinks: NavLink[] = [
-  { label: "Home", href: "/" },
+export const siteNavLinks: NavLink[] = [
+  { label: "About", href: "/#about" },
   { label: "Projects", href: "/projects" },
   { label: "Experience", href: "/#experience" },
+  { label: "Services", href: "/#services" },
+  { label: "Credentials", href: "/#credentials" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -213,7 +207,7 @@ export const experienceTimeline: ExperienceEntry[] = [
   },
   {
     company: "AboveTheWIngs",
-    role: "Web Developer Intern",
+    role: "Software Engineering Intern",
     dateRange: "Jun 2023 - Nov 2023",
     highlights: [
       "Integrated the Amadeus API for real-time flight search and booking, reducing search latency by 40%.",
@@ -225,19 +219,22 @@ export const experienceTimeline: ExperienceEntry[] = [
 
 export const certifications: CertificationEntry[] = [
   {
-    title: "Generative AI Leader Specialization",
-    issuer: "Google Cloud",
+    title: "Generative AI Leader",
+    issuer: "Google Cloud -  Professional Certificate",
     date: "Apr 2026",
+    credentialHref: "https://coursera.org/share/c0fdfbd2051e0b3f7db881aebfd98d97",
   },
   {
     title: "Google Prompting Essentials",
-    issuer: "Google",
+    issuer: "Google - Specialization",
     date: "Apr 2026",
+    credentialHref: "https://coursera.org/share/0befeac3b2b918a0134b1768537c4332",
   },
   {
     title: "Automation Business Analysis - Concepts And Principles",
     issuer: "UiPath",
     date: "Jan 2025",
+    credentialHref: "https://coursera.org/share/1875262ee36b5da091f168d5158609e7",
   },
 ];
 

@@ -8,12 +8,12 @@ import {
   ExternalLink,
   HeartHandshake,
   Link2,
-  Mail,
   Medal,
   Sparkles,
 } from "lucide-react";
 
 import { SectionHeading } from "@/components/SectionHeading";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -32,8 +32,8 @@ import {
   education,
   experienceTimeline,
   featuredProjects,
-  homeNavLinks,
   metrics,
+  siteNavLinks,
   services,
 } from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
@@ -41,7 +41,7 @@ import { cn } from "@/lib/utils";
 export default function Home() {
   return (
     <div id="top" className="bg-grid bg-[#F2EDE4] text-[#2D1A0E]">
-      <SiteHeader links={homeNavLinks} />
+      <SiteHeader links={siteNavLinks} />
 
       <main>
         <section className="overflow-hidden">
@@ -107,7 +107,7 @@ export default function Home() {
               <div className="absolute bottom-24 left-8 hidden h-3 w-3 bg-[#F06A2A] xl:block" />
               <div className="absolute right-2 top-16 hidden max-w-[12rem] lg:block xl:right-6">
                 <p className="font-heading text-[1.55rem] font-bold uppercase leading-[0.92]">
-                  TEAM LEAD. AI ENGINEER. PRODUCT BUILDER.
+                  PRODUCT BUILDER.<br />TEAM LEAD.<br />AI ENGINEER.
                 </p>
               </div>
               <div className="absolute bottom-6 right-2 hidden max-w-[12rem] xl:block">
@@ -209,7 +209,7 @@ export default function Home() {
                 <Card
                   key={project.title}
                   className={cn(
-                    "rounded-none border-0 bg-[#E8DCC8] py-0 shadow-none ring-0 animate-in fade-in slide-in-from-bottom-6 duration-700 motion-reduce:animate-none",
+                    "flex h-full flex-col rounded-none border-0 bg-[#E8DCC8] py-0 shadow-none ring-0 animate-in fade-in slide-in-from-bottom-6 duration-700 motion-reduce:animate-none",
                     index === 1 && "[animation-delay:120ms] [animation-fill-mode:both]",
                     index === 2 && "[animation-delay:220ms] [animation-fill-mode:both]"
                   )}
@@ -219,7 +219,7 @@ export default function Home() {
                       <p className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/65">
                         {project.roleOrType}
                       </p>
-                      <h3 className="mt-3 max-w-[8ch] text-[2.3rem] font-black leading-none tracking-tight">
+                      <h3 className="mt-3 min-h-[4.6rem] max-w-[8ch] text-[2.3rem] font-black leading-none tracking-tight">
                         {project.title}
                       </h3>
                     </div>
@@ -227,11 +227,11 @@ export default function Home() {
                       <Sparkles className="size-5" />
                     </div>
                   </div>
-                  <CardContent className="space-y-6 px-6 py-6">
+                  <CardContent className="flex flex-1 flex-col space-y-6 px-6 py-6">
                     <CardDescription className="text-base leading-relaxed text-[#2D1A0E]/80">
                       {project.summary}
                     </CardDescription>
-                    <div className="space-y-3">
+                    <div className="flex-1 space-y-3">
                       {project.highlights.map((highlight) => (
                         <div key={highlight} className="flex gap-3 text-sm text-[#2D1A0E]/82">
                           <ChevronRight className="mt-0.5 size-4 shrink-0 text-[#F06A2A]" />
@@ -285,7 +285,7 @@ export default function Home() {
                 <Card
                   key={service.serviceName}
                   className={cn(
-                    "rounded-none border border-[#2D1A0E]/10 bg-[#FAFAF8] py-0 shadow-none ring-0 animate-in fade-in slide-in-from-bottom-6 duration-700 motion-reduce:animate-none",
+                    "flex h-full flex-col rounded-none border border-[#2D1A0E]/10 bg-[#FAFAF8] py-0 shadow-none ring-0 animate-in fade-in slide-in-from-bottom-6 duration-700 motion-reduce:animate-none",
                     index === 1 && "[animation-delay:120ms] [animation-fill-mode:both]",
                     index === 2 && "[animation-delay:220ms] [animation-fill-mode:both]"
                   )}
@@ -294,14 +294,14 @@ export default function Home() {
                     <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F5C800] text-[#2D1A0E]">
                       <Icon className="size-6" />
                     </div>
-                    <CardTitle className="font-heading text-[2rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
+                    <CardTitle className="min-h-[4rem] font-heading text-[2rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
                       {service.serviceName}
                     </CardTitle>
                     <CardDescription className="text-base leading-relaxed text-[#2D1A0E]/78">
                       {service.oneLiner}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-4 px-6 py-6">
+                  <CardContent className="flex-1 space-y-4 px-6 py-6">
                     {service.supportingPoints.map((point) => (
                       <div key={point} className="flex gap-3 text-sm text-[#2D1A0E]/82">
                         <Link2 className="mt-0.5 size-4 shrink-0 text-[#F06A2A]" />
@@ -404,6 +404,17 @@ export default function Home() {
                         <p className="mt-2 text-sm text-[#2D1A0E]/75">
                           {certification.issuer}
                         </p>
+                        {certification.credentialHref ? (
+                          <a
+                            href={certification.credentialHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-3 inline-flex items-center gap-2 font-heading text-[13px] font-bold uppercase tracking-[0.16em] text-[#2D1A0E] transition-colors hover:text-[#F06A2A]"
+                          >
+                            Show Credential
+                            <ExternalLink className="size-4" />
+                          </a>
+                        ) : null}
                       </div>
                     </div>
                     <p className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/60">
@@ -457,23 +468,20 @@ export default function Home() {
             />
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {communityImpact.map((entry, index) => (
+              {communityImpact.map((entry) => (
                 <Card
                   key={entry.title}
-                  className={cn(
-                    "rounded-none border border-[#2D1A0E]/10 bg-[#FAFAF8] py-0 shadow-none ring-0",
-                    index === 0 && "lg:translate-y-4"
-                  )}
+                  className="flex h-full flex-col rounded-none border border-[#2D1A0E]/10 bg-[#FAFAF8] py-0 shadow-none ring-0"
                 >
                   <CardHeader className="gap-4 rounded-none border-b border-[#2D1A0E]/10 px-6 py-6">
                     <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F5C800] text-[#2D1A0E]">
                       <HeartHandshake className="size-6" />
                     </div>
-                    <CardTitle className="font-heading text-[1.9rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
+                    <CardTitle className="min-h-[4.25rem] font-heading text-[1.9rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
                       {entry.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="px-6 py-6 text-[#2D1A0E]/80">
+                  <CardContent className="flex-1 px-6 py-6 text-[#2D1A0E]/80">
                     <p>{entry.summary}</p>
                   </CardContent>
                 </Card>
@@ -483,72 +491,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer id="contact" className="bg-[#2D1A0E] text-[#FAFAF8]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:px-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-          <div>
-            <p className="font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-[#FAFAF8]/68">
-              CONTACT
-            </p>
-            <h2 className="mt-4 max-w-[9ch] text-[3.6rem] font-black leading-[0.9] tracking-tight text-[#FAFAF8] md:text-[5.4rem]">
-              LET&apos;S BUILD THE NEXT AI SYSTEM RIGHT.
-            </h2>
-            <p className="mt-6 max-w-[34rem] text-base text-[#FAFAF8]/78">
-              If you are hiring for AI engineering, looking for product-minded
-              LLM execution, or building a workflow that needs to move from
-              promise to production, reach out directly.
-            </p>
-          </div>
-
-          <div className="grid gap-4 self-end">
-            <a
-              href={`mailto:${contactLinks.email}`}
-              className="flex items-center justify-between border border-[#FAFAF8]/15 bg-[#1C1C1C] px-5 py-4 transition-colors hover:border-[#F5C800] hover:text-[#F5C800]"
-            >
-              <span className="flex items-center gap-3 font-heading text-[1.2rem] font-bold uppercase tracking-tight">
-                <Mail className="size-5" />
-                {contactLinks.email}
-              </span>
-              <ArrowRight className="size-4" />
-            </a>
-            <a
-              href={contactLinks.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between border border-[#FAFAF8]/15 px-5 py-4 transition-colors hover:border-[#F5C800] hover:text-[#F5C800]"
-            >
-              <span className="flex items-center gap-3 font-heading text-[1.2rem] font-bold uppercase tracking-tight">
-                <Link2 className="size-5" />
-                LINKEDIN
-              </span>
-              <ExternalLink className="size-4" />
-            </a>
-            <a
-              href={contactLinks.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between border border-[#FAFAF8]/15 px-5 py-4 transition-colors hover:border-[#F5C800] hover:text-[#F5C800]"
-            >
-              <span className="flex items-center gap-3 font-heading text-[1.2rem] font-bold uppercase tracking-tight">
-                <Cpu className="size-5" />
-                GITHUB
-              </span>
-              <ExternalLink className="size-4" />
-            </a>
-            <a
-              href={contactLinks.resumeHref}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between border border-[#FAFAF8]/15 px-5 py-4 transition-colors hover:border-[#F5C800] hover:text-[#F5C800]"
-            >
-              <span className="flex items-center gap-3 font-heading text-[1.2rem] font-bold uppercase tracking-tight">
-                <Medal className="size-5" />
-                RESUME
-              </span>
-              <ExternalLink className="size-4" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

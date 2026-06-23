@@ -27,7 +27,7 @@ export function SiteHeader({ links }: SiteHeaderProps) {
     <header className="sticky top-0 z-40 border-b border-[#2D1A0E]/10 bg-[#FAFAF8]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 md:px-8">
         <a
-          href="#top"
+          href="/"
           className="font-heading text-[1.7rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]"
         >
           Faizan<span className="text-[#F06A2A]">.</span>

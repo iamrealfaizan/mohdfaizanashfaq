@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import { SectionHeading } from "@/components/SectionHeading";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -22,14 +23,14 @@ import { Separator } from "@/components/ui/separator";
 import {
   allProjects,
   contactLinks,
-  projectsNavLinks,
+  siteNavLinks,
 } from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
 
 export default function ProjectsPage() {
   return (
     <div className="bg-grid min-h-screen bg-[#F2EDE4] text-[#2D1A0E]">
-      <SiteHeader links={projectsNavLinks} />
+      <SiteHeader links={siteNavLinks} />
 
       <main>
         <section className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-18">
@@ -189,6 +190,8 @@ export default function ProjectsPage() {
           </div>
         </section>
       </main>
+
+      <SiteFooter />
     </div>
   );
 }

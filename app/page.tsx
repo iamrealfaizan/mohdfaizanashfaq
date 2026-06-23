@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { GitHubContributionsSection } from "@/components/GitHubContributionsSection";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -143,6 +144,64 @@ export default function Home() {
             <p className="font-heading text-[13px] font-bold uppercase tracking-[0.22em]">
               RECRUITER-READY, CLIENT-READY, EXECUTION-FIRST
             </p>
+          </div>
+        </section>
+
+        <section id="experience" className="bg-[#FAFAF8] py-20 md:py-28">
+          <div className="mx-auto max-w-7xl px-4 md:px-8">
+            <SectionHeading
+              eyebrow="EXPERIENCE"
+              title="A TIMELINE BUILT AROUND DELIVERY."
+              description="The timeline shows progression from building systems to leading them. It is meant to show depth, measurable outcomes, and the ability to deliver across roles."
+            />
+
+            <div className="mt-12 space-y-6">
+              {experienceTimeline.map((item, index) => (
+                <Card
+                  key={`${item.company}-${item.role}`}
+                  className={cn(
+                    "rounded-none border border-[#2D1A0E]/10 bg-[#FAFAF8] py-0 shadow-none ring-0 animate-in fade-in slide-in-from-bottom-6 duration-700 motion-reduce:animate-none",
+                    index > 0 &&
+                      "[animation-delay:120ms] [animation-fill-mode:both]"
+                  )}
+                >
+                  <CardContent className="grid gap-6 px-6 py-6 lg:grid-cols-[220px_minmax(0,1fr)]">
+                    <div>
+                      <p className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/60">
+                        {item.dateRange}
+                      </p>
+                      <div className="mt-3 flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F5C800] text-[#2D1A0E]">
+                          {item.role.includes("Lead") ? (
+                            <BriefcaseBusiness className="size-4" />
+                          ) : item.role.includes("Intern") ? (
+                            <Building2 className="size-4" />
+                          ) : (
+                            <Cpu className="size-4" />
+                          )}
+                        </div>
+                        <p className="font-heading text-[1.5rem] font-black uppercase leading-none tracking-tight">
+                          {item.company}
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-[2rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
+                        {item.role}
+                      </h3>
+                      <div className="mt-5 space-y-3">
+                        {item.highlights.map((highlight) => (
+                          <div key={highlight} className="flex gap-3 text-[#2D1A0E]/80">
+                            <div className="mt-2 h-2 w-2 shrink-0 bg-[#F06A2A]" />
+                            <p>{highlight}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -315,63 +374,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="bg-[#FAFAF8] py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <SectionHeading
-              eyebrow="EXPERIENCE"
-              title="A TIMELINE BUILT AROUND DELIVERY."
-              description="The timeline shows progression from building systems to leading them. It is meant to show depth, measurable outcomes, and the ability to deliver across roles."
-            />
-
-            <div className="mt-12 space-y-6">
-              {experienceTimeline.map((item, index) => (
-                <Card
-                  key={`${item.company}-${item.role}`}
-                  className={cn(
-                    "rounded-none border border-[#2D1A0E]/10 bg-[#FAFAF8] py-0 shadow-none ring-0 animate-in fade-in slide-in-from-bottom-6 duration-700 motion-reduce:animate-none",
-                    index > 0 &&
-                      "[animation-delay:120ms] [animation-fill-mode:both]"
-                  )}
-                >
-                  <CardContent className="grid gap-6 px-6 py-6 lg:grid-cols-[220px_minmax(0,1fr)]">
-                    <div>
-                      <p className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2D1A0E]/60">
-                        {item.dateRange}
-                      </p>
-                      <div className="mt-3 flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F5C800] text-[#2D1A0E]">
-                          {item.role.includes("Lead") ? (
-                            <BriefcaseBusiness className="size-4" />
-                          ) : item.role.includes("Intern") ? (
-                            <Building2 className="size-4" />
-                          ) : (
-                            <Cpu className="size-4" />
-                          )}
-                        </div>
-                        <p className="font-heading text-[1.5rem] font-black uppercase leading-none tracking-tight">
-                          {item.company}
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-heading text-[2rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
-                        {item.role}
-                      </h3>
-                      <div className="mt-5 space-y-3">
-                        {item.highlights.map((highlight) => (
-                          <div key={highlight} className="flex gap-3 text-[#2D1A0E]/80">
-                            <div className="mt-2 h-2 w-2 shrink-0 bg-[#F06A2A]" />
-                            <p>{highlight}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        <GitHubContributionsSection />
 
         <section id="credentials" className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
           <SectionHeading

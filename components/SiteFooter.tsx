@@ -1,4 +1,4 @@
-import { ArrowRight, Cpu, ExternalLink, Link2, Mail, Medal } from "lucide-react";
+import { ArrowRight, Code2, Cpu, ExternalLink, Link2, Mail, Medal } from "lucide-react";
 
 import { contactLinks } from "@/lib/portfolio-data";
 
@@ -40,6 +40,18 @@ export function SiteFooter() {
             <span className="flex items-center gap-3 font-heading text-[1.2rem] font-bold uppercase tracking-tight">
               <Link2 className="size-5" />
               LINKEDIN
+            </span>
+            <ExternalLink className="size-4" />
+          </a>
+          <a
+            href={contactLinks.leetcode}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-between border border-[#FAFAF8]/15 px-5 py-4 text-[#FAFAF8] transition-colors hover:border-[#F5C800] hover:text-[#F5C800]"
+          >
+            <span className="flex items-center gap-3 font-heading text-[1.2rem] font-bold uppercase tracking-tight">
+              <Code2 className="size-5" />
+              LEETCODE
             </span>
             <ExternalLink className="size-4" />
           </a>

@@ -65,8 +65,8 @@ export interface ContactLinks {
 
 export const siteNavLinks: NavLink[] = [
   { label: "About", href: "/#about" },
-  { label: "Projects", href: "/projects" },
   { label: "Experience", href: "/#experience" },
+  { label: "Projects", href: "/projects" },
   { label: "Services", href: "/#services" },
   { label: "Credentials", href: "/#credentials" },
   { label: "Contact", href: "/#contact" },
@@ -284,6 +284,6 @@ export const contactLinks: ContactLinks = {
   email: "mohdfaizanashfaq@gmail.com",
   linkedin: "https://linkedin.com/in/mohdfaizanashfaq",
   github: "https://github.com/iamrealfaizan",
-  leetcode: "https://leetcode.com",
+  leetcode: "https://leetcode.com/u/mohdfaizanashfaq/",
   resumeHref: "/resume/MOHD_FAIZAN_7498478741.pdf",
 };

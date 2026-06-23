@@ -25,10 +25,10 @@ interface SiteHeaderProps {
 export function SiteHeader({ links }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-[#2D1A0E]/10 bg-[#FAFAF8]/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 md:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:gap-6 sm:py-4 md:px-8">
         <a
           href="/"
-          className="font-heading text-[1.7rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]"
+          className="font-heading text-[1.5rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E] sm:text-[1.7rem]"
         >
           Faizan<span className="text-[#F06A2A]">.</span>
         </a>
@@ -65,7 +65,7 @@ export function SiteHeader({ links }: SiteHeaderProps) {
                 <Button
                   variant="ghost"
                   size="icon-lg"
-                  className="rounded-full border border-[#2D1A0E]/10 bg-[#F5C800] text-[#2D1A0E] hover:bg-[#F5C800]/90"
+                  className="size-11 rounded-full border border-[#2D1A0E]/10 bg-[#F5C800] text-[#2D1A0E] hover:bg-[#F5C800]/90"
                 />
               }
             >
@@ -86,7 +86,7 @@ export function SiteHeader({ links }: SiteHeaderProps) {
                   <a
                     key={link.href}
                     href={link.href}
-                    className="border-b border-[#2D1A0E]/10 py-4 font-heading text-[1.7rem] font-bold uppercase leading-none tracking-tight text-[#2D1A0E]"
+                    className="border-b border-[#2D1A0E]/10 py-4 font-heading text-[1.4rem] font-bold uppercase leading-none tracking-tight text-[#2D1A0E] sm:text-[1.7rem]"
                   >
                     {link.label}
                   </a>

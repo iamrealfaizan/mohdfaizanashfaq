@@ -113,7 +113,7 @@ function HeatmapGrid({
 
   const body = (
     <div className="min-w-[760px]">
-      <p className="text-[1.75rem] leading-none" style={{ color: textColor }}>
+      <p className="text-[1.35rem] leading-none sm:text-[1.5rem] md:text-[1.75rem]" style={{ color: textColor }}>
         <span className="font-semibold">{total}</span> contributions in the last year
       </p>
 
@@ -172,7 +172,7 @@ function HeatmapGrid({
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-end gap-2 text-xs text-[#57606a]">
+      <div className="mt-4 flex items-center justify-end gap-2 pr-1 text-xs text-[#57606a]">
         <span>Less</span>
         <span className="h-[10px] w-[10px] rounded-[2px]" style={{ backgroundColor: toneFor(0, maxCount) }} />
         <span className="h-[10px] w-[10px] rounded-[2px]" style={{ backgroundColor: toneFor(Math.max(1, Math.ceil(maxCount * 0.2)), maxCount) }} />
@@ -220,10 +220,10 @@ export async function GitHubContributionsSection() {
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <div className="border border-[#d0d7de] bg-white p-6 text-[#24292f]">
-            <div className="mb-6 flex items-start justify-between gap-4">
+          <div className="overflow-hidden border border-[#d0d7de] bg-white p-4 text-[#24292f] sm:p-6">
+            <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div>
-                <p className="font-heading text-[1.6rem] font-black uppercase leading-none tracking-tight text-[#24292f]">
+                <p className="font-heading text-[1.35rem] font-black uppercase leading-none tracking-tight text-[#24292f] sm:text-[1.6rem]">
                   GITHUB CONTRIBUTIONS
                 </p>
                 <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#57606a]">
@@ -234,7 +234,7 @@ export async function GitHubContributionsSection() {
                 href={contactLinks.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 font-heading text-[13px] font-bold uppercase tracking-[0.16em] text-[#24292f] transition-colors hover:text-[#30a14e]"
+                className="inline-flex min-h-11 items-center gap-2 self-start font-heading text-[13px] font-bold uppercase tracking-[0.16em] text-[#24292f] transition-colors hover:text-[#30a14e]"
               >
                 Profile
                 <ArrowUpRight className="size-4" />
@@ -259,10 +259,10 @@ export async function GitHubContributionsSection() {
             )}
           </div>
 
-          <div className="border border-[#2D1A0E]/10 bg-[#FAFAF8] p-6">
-            <div className="mb-6 flex items-start justify-between gap-4">
+          <div className="overflow-hidden border border-[#2D1A0E]/10 bg-[#FAFAF8] p-4 sm:p-6">
+            <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div>
-                <p className="font-heading text-[1.6rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E]">
+                <p className="font-heading text-[1.35rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E] sm:text-[1.6rem]">
                   LEETCODE SUBMISSIONS
                 </p>
                 <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2D1A0E]/65">
@@ -273,7 +273,7 @@ export async function GitHubContributionsSection() {
                 href={contactLinks.leetcode}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 font-heading text-[13px] font-bold uppercase tracking-[0.16em] text-[#2D1A0E] transition-colors hover:text-[#30a14e]"
+                className="inline-flex min-h-11 items-center gap-2 self-start font-heading text-[13px] font-bold uppercase tracking-[0.16em] text-[#2D1A0E] transition-colors hover:text-[#30a14e]"
               >
                 Profile
                 <ArrowUpRight className="size-4" />

@@ -48,13 +48,13 @@ export default function Home() {
         <section className="overflow-hidden">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:py-10 md:px-8 md:py-12 lg:min-h-[calc(100dvh-81px)] lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center lg:gap-4 lg:py-8">
             <div className="relative z-10 flex flex-col justify-center">
-              <Badge className="max-w-full rounded-none border border-[#2D1A0E] bg-transparent px-3 py-1.5 font-body text-[10px] font-semibold uppercase leading-[1.35] tracking-[0.18em] text-[#2D1A0E] whitespace-normal animate-in fade-in duration-500 motion-reduce:animate-none sm:w-fit sm:px-3 sm:py-1 sm:text-[11px] sm:leading-snug sm:tracking-[0.28em]">
+              {/* <Badge className="max-w-full rounded-none border border-[#2D1A0E] bg-transparent px-3 py-1.5 font-body text-[10px] font-semibold uppercase leading-[1.35] tracking-[0.18em] text-[#2D1A0E] whitespace-normal animate-in fade-in duration-500 motion-reduce:animate-none sm:w-fit sm:px-3 sm:py-1 sm:text-[11px] sm:leading-snug sm:tracking-[0.28em]">
                 AVAILABLE FOR AI PRODUCT, RAG, AND LLM DELIVERY
-              </Badge>
+              </Badge> */}
 
               <div className="mt-5 grid grid-cols-[minmax(0,1fr)_132px] items-end gap-4 sm:grid-cols-[minmax(0,1fr)_165px] lg:block animate-in fade-in slide-in-from-bottom-6 duration-700 [animation-delay:120ms] [animation-fill-mode:both] motion-reduce:animate-none">
                 <h1 className="max-w-[7ch] text-[3.15rem] font-black leading-[0.86] tracking-tight sm:text-[3.8rem] md:text-[5rem] lg:text-[6.1rem] xl:text-[6.7rem]">
-                  AI SYSTEMS. PRODUCT THINKING. SHIPPED.
+                  FROM IDEAS TO SCALABLE AI SYSTEMS
                 </h1>
 
                 <div className="relative h-[180px] w-full self-center sm:h-[220px] lg:hidden">
@@ -70,7 +70,7 @@ export default function Home() {
               </div>
 
               <p className="mt-5 max-w-[33rem] text-[15px] leading-relaxed text-[#2D1A0E]/80 md:text-lg animate-in fade-in slide-in-from-bottom-6 duration-700 [animation-delay:220ms] [animation-fill-mode:both] motion-reduce:animate-none">
-                I help teams turn ideas into scalable AI and web solutions that
+                I help teams turn ideas into scalable AI and Web Solutions that
                 save time, cut costs, and create measurable impact.
               </p>
 

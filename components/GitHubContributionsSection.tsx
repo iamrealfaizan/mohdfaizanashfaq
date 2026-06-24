@@ -14,6 +14,10 @@ interface HeatmapDay {
   date: string;
 }
 
+function isPlaceholderDay(date: string) {
+  return date.startsWith("pad-");
+}
+
 function getLeetCodeUsername(leetcodeUrl: string) {
   const match = leetcodeUrl.match(/leetcode\.com\/(?:u\/)?([^/?#]+)/i);
   const username = match?.[1];
@@ -111,12 +115,8 @@ function HeatmapGrid({
     0
   );
 
-  const body = (
+  const heatmap = (
     <div className="min-w-[760px]">
-      <p className="text-[1.35rem] leading-none sm:text-[1.5rem] md:text-[1.75rem]" style={{ color: textColor }}>
-        <span className="font-semibold">{total}</span> contributions in the last year
-      </p>
-
       <div className="mt-5 ml-10 h-5">
         <div className="relative h-5">
           {monthLabels.map((month) => (
@@ -153,15 +153,17 @@ function HeatmapGrid({
                   key={day.date}
                   className="h-[10px] w-[10px] rounded-[2px] border border-black/0"
                   style={{
-                    backgroundColor: toneFor(day.contributionCount, maxCount),
+                    backgroundColor: isPlaceholderDay(day.date)
+                      ? "transparent"
+                      : toneFor(day.contributionCount, maxCount),
                   }}
                   title={
-                    day.date.startsWith("pad-")
+                    isPlaceholderDay(day.date)
                       ? undefined
                       : `${day.contributionCount} contributions on ${day.date}`
                   }
                   aria-label={
-                    day.date.startsWith("pad-")
+                    isPlaceholderDay(day.date)
                       ? undefined
                       : `${day.contributionCount} contributions on ${day.date}`
                   }
@@ -184,11 +186,31 @@ function HeatmapGrid({
     </div>
   );
 
+  const summary = (
+    <p
+      className="text-[1.35rem] leading-none sm:text-[1.5rem] md:text-[1.75rem]"
+      style={{ color: textColor }}
+    >
+      <span className="font-semibold">{total}</span> contributions in the last
+      year
+    </p>
+  );
+
   if (autoScroll) {
-    return <AutoScrollX className="overflow-x-auto">{body}</AutoScrollX>;
+    return (
+      <div>
+        {summary}
+        <AutoScrollX className="overflow-x-auto">{heatmap}</AutoScrollX>
+      </div>
+    );
   }
 
-  return <div className="overflow-x-auto">{body}</div>;
+  return (
+    <div>
+      {summary}
+      <div className="overflow-x-auto">{heatmap}</div>
+    </div>
+  );
 }
 
 export async function GitHubContributionsSection() {
@@ -263,7 +285,7 @@ export async function GitHubContributionsSection() {
             <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div>
                 <p className="font-heading text-[1.35rem] font-black uppercase leading-none tracking-tight text-[#2D1A0E] sm:text-[1.6rem]">
-                  LEETCODE SUBMISSIONS
+                  LEETCODE
                 </p>
                 <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2D1A0E]/65">
                   {leetCodeUsername ?? "PROFILE NEEDED"}

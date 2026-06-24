@@ -63,7 +63,7 @@ export default function Home() {
                     alt="Mohammed Faizan Ashfaq in a suit, facing left."
                     fill
                     priority
-                    className="object-contain object-bottom object-center"
+                    className="object-contain object-bottom"
                     sizes="165px"
                   />
                 </div>
@@ -135,7 +135,7 @@ export default function Home() {
                   alt="Mohammed Faizan Ashfaq in a suit, facing left."
                   fill
                   priority
-                  className="object-contain object-bottom object-center lg:object-right"
+                  className="object-contain object-bottom lg:object-right"
                   sizes="(min-width: 1024px) 48vw, 100vw"
                 />
               </div>
